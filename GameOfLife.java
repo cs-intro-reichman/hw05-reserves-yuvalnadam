@@ -79,7 +79,6 @@ public class GameOfLife {
 			for (int j = 1; j < cols; j++ ) {
 
 				if (i == 1 || i == rows - 1 || j == 1 || j == cols - 1) { // populates fhe 'frame' with 0
-
 					board[i][j] = 0;
 					
 				}
@@ -210,7 +209,7 @@ public class GameOfLife {
 		for (int i = 1; i < arr.length - 1; i++) {
             for (int j = 1; j < arr[i].length - 1; j++) {
 
-                System.out.printf("%2d", arr[i - 1][j - 1]);
+                System.out.printf("%d  ", arr[i - 1][j - 1]);
             }
 
             System.out.println();
