@@ -13,7 +13,7 @@ public class GameOfLife {
 		//// (Run one test at a time).
 	//	test1(fileName);
 	//	test2(fileName);
-	//	 test3(fileName, 3);
+		 test3(fileName, 3);
 		play(fileName);
 	}
 	
@@ -210,7 +210,7 @@ public class GameOfLife {
 		for (int i = 1; i < arr.length - 1; i++) {
             for (int j = 1; j < arr[i].length - 1; j++) {
 
-                System.out.printf("%4d", arr[i - 1][j - 1]);
+                System.out.printf("%2d", arr[i - 1][j - 1]);
             }
 
             System.out.println();
