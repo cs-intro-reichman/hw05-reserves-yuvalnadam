@@ -147,14 +147,14 @@ public class GameOfLife {
 					return 1; 
 				}
 
-				 if (sum < 2 || sum > 3) {
+				 else if (sum < 2 || sum > 3) {
 					return 0;
 				}
 
 
 		}
 
-		else if (cell == 0){ // cases in which cell is desd
+		 if (cell == 0){ // cases in which cell is desd
 
 				if (sum == 3) {
 					return 1;
