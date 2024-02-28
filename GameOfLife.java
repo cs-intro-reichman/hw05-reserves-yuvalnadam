@@ -140,29 +140,21 @@ public class GameOfLife {
 		int cell = board[i][j];
 		int sum = count(board, i, j);
 
-		if (cell == 1) { //cases in which cell is alive
+	
+		if(cell == 1 && sum == 2)
+			return 1; 
 
-				if (sum == 2 || sum == 3) {
+		if (cell == 1 && sum == 3)
+		return 1;
 
-					return 1; 
-				}
-
-				 else if (sum < 2 || sum > 3) {
-					return 0;
-				}
-
-
-		}
-
-		 if (cell == 0){ // cases in which cell is desd
-
-				if (sum == 3) {
-					return 1;
-					
-				}
+		if (cell == 1 && sum <2) {
+		 	return 0;
+		 } 
+		 
+		 if(cell == 0 && sum == 3)
+		 	return 1;
+			
 		
-		}
-
 			return cell;
 		
 	}
