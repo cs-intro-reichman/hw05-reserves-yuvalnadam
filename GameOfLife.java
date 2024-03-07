@@ -27,15 +27,14 @@ public class GameOfLife {
 	// the count and cellValue functions.
 	private static void test2(String fileName) {
 		int[][] board = read(fileName);
-
-		for (int i = 1; i < board.length - 1; i++) {
-            for (int j = 1; j < board[i].length - 1; j++) {
-
-                System.out.print(cellValue(board, i, j));
-            }
-
-            System.out.println();
-        }
+		String newStr = "";
+		for(int i = 0; i < board.length; i++) {
+			for(int j = 0 ; j < board[0].length; j++) {
+				if(board[i][j] == 1)
+				newStr += " Board[" + i + "][" + j + "] = " + cellValue(board, i, j);
+			}
+		}
+		System.out.println(newStr + " ");
 
 	}
 		
@@ -72,35 +71,24 @@ public class GameOfLife {
 		int cols = Integer.parseInt(in.readLine());
 		int[][] board = new int[rows + 2][cols + 2];
 		
-		for (int i = 1; i < rows; i++ ) {
+		String readLine = in.readLine(); 
+		int count = 0; 
+		for (int i = 1 ; i < board.length-1; i++){
 
-			String line = in.readLine();
+			for (int j = 1; j < board[0].length-1; j++){
 
-			for (int j = 1; j < cols; j++ ) {
+				if (readLine != null && count < readLine.length()){
 
-				if (i == 1 || i == rows - 1 || j == 1 || j == cols - 1) { // populates fhe 'frame' with 0
-					board[i][j] = 0;
-					
-				}
+					if (readLine.charAt(count) == 'x'){
 
-				if (line != null) {
-					for (int ln = 0; ln < line.length(); ln++ ) {
-						
-						 if(line.charAt(ln) == 'x')
-							board[i - 1][ln] = 1; // populate live cells
-				
+						board [i][j] = 1;
 					}
-
-					
+					count ++; 
 				}
-			
 			}
-
-			
-			
+			readLine = in.readLine();
+			count = 0;
 		}
-
-	
 
 		return board;
 	}
@@ -195,7 +183,7 @@ public class GameOfLife {
 		for (int i = 1; i < arr.length - 1; i++) {
             for (int j = 1; j < arr[i].length - 1; j++) {
 
-                System.out.printf("%3s", arr[i - 1][j - 1]);
+                System.out.printf("%3s", arr[i][j]);
             }
 
             System.out.println();
