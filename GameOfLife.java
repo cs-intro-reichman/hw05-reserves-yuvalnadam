@@ -109,11 +109,8 @@ public class GameOfLife {
 	// Uses the cellValue(board,i,j) function to compute the value of each 
 	// cell in the new board. Returns the new board.
 	public static int[][] evolve(int[][] board) {
-		
-		int r = board.length;
-		int c = board[1].length; 
 
-		int[][] newBoard = new int[r][c];
+		int[][] newBoard = new int[board.length][board[0].length];
 
 		for (int i = 1; i < board.length - 1; i++) {
             for (int j = 1; j < board[i].length - 1; j++) {
@@ -138,24 +135,21 @@ public class GameOfLife {
 	public static int cellValue(int[][] board, int i, int j) {
 
 		int cell = board[i][j];
-		int sum = count(board, i, j);
 
-	
-		if(cell == 1 && sum == 2)
+		if (board [i][j] == 1 && count(board, i, j) < 2 ){
+			return 0; 
+		}
+		if (board [i][j] == 1 && (count(board, i, j) == 2 || count(board, i, j) == 3) ){
 			return 1; 
+		}
+		if (board [i][j] == 1 && count(board, i, j) > 3){
+			return 0; 
+		}
+		if (board [i][j] == 0 && (count(board, i, j) == 3)){
+			return 1; 
+		}
 
-		if (cell == 1 && sum == 3)
-		return 1;
-
-		if (cell == 1 && sum <2) {
-		 	return 0;
-		 } 
-		 
-		 if(cell == 0 && sum == 3)
-		 	return 1;
-			
-		
-			return cell;
+		return cell;
 		
 	}
 	
@@ -173,7 +167,7 @@ public class GameOfLife {
 			if(board[i - 1][j - 1] == 1)
 				sumLive++;
 
-			if (board[i][ j + 1] == 1) 
+			if (board[i][j + 1] == 1) 
 				sumLive++;
 
 			if(board[i][j - 1] == 1)
